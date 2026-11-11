@@ -1,0 +1,276 @@
+\documentclass[11pt, xcolor={dvipsnames}, usepdftitle=false]{beamer}
+\usepackage{presentation}
+\hypersetup{pdfpagemode=UseNone, hidelinks, pdfdisplaydoctitle=true,%
+%
+% Enter presentation title to populate PDF metadata:
+pdftitle={Minimalist LaTeX Template for Academic Presentations}}
+
+% Enter path to PDF file with figures:
+\newcommand{\pdf}{figures.pdf}
+
+% Enter title:
+\title{Effect of Menopausal Hormone Therapy on Hypertension in Menopausal Women}
+
+% Enter authors:
+\author{Quan Nguyen, Candus Shi, Ziyuan Zhang}
+
+% Enter location and date:
+\date{December 10, 2026}
+
+% Enter URL to paper (can be commented out):
+% \paperurl{https://github.com/pmichaillat/latex-presentation}
+
+\begin{document}
+\frame{\titlepage}
+
+% Enter content of presentation:
+\begin{frame}{Background}
+\begin{itemize}
+\item Hypertension prevalence rises in women during midlife.
+\item The effect of menopausal hormone therapy (MHT) on cardiovascular outcomes is contested.
+\item Most observational studies of MHT and hypertension report hazard ratios from Cox models. 
+\item To account for time-varying confounding, we use L-TMLE to estimate the causal effect of MHT initiation based on different initiation rules on cumulative incidence of hypertension by visit $K$ in the Study of Women's Health Across the Nation (SWAN). 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Roadmap Step 1: Data}
+SWAN is a multi-site, longitudinal study of women during the menopausal transition, with limited data from 10 follow-up visits publicly available:
+\begin{itemize}
+\item Exposure: use of MHT since the last visit (combination estrogen/progestin, estrogen pills, estrogen injection or patch, or progestin pills)
+\item Outcome: incident hypertension, defined as measured blood pressure $\geq$ 130/80 mmHg or use of antihypertensive medication at a visit or indicator of whether being told by doctor of hypertension
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Roadmap Step 1: Data (Continued)} 
+\begin{itemize}
+    \item Baseline covariates: age, race/ethnicity, education, baseline blood pressure
+    \item Time-varying covariates: menopausal status, vasomotor symptoms, weight, alcohol use, smoking, physical activity, diabetes status, depression, anxiety, missingness
+\item Censoring: loss to follow-up
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Roadmap Step 2: Statistical Model}
+Our observed data are
+\[O = (W, L(1), A(1), C(1), Y(1), \dots, L(10), A(10), C(10), Y(10)) \sim P_0\]
+where 
+
+\begin{itemize}
+    \item $W$ are baseline covariates
+    \item $L(t)$ are time-varying covariates
+    \item $A(t)$ indicates MHT use since the previous visit \footnotemark
+    \item $C(t)$ indicates loss to follow-up
+    \item $Y(t)$ is a monotone indicator that hypertension occurred by visit $t$
+\end{itemize}
+
+\footnotetext{Because $A(t)$ refers to use since the last visit, it is ordered after the covariates $L(t)$ measured at the previous visit and before the blood pressure $Y(t)$ measured at the current visit.}
+\end{frame}
+
+\begin{frame}{Roadmap Step 2: Statistical Model (Continued)}
+\begin{itemize}
+    \item Restrict to women who are free of hypertension and have never used MHT at baseline, so that time zero is well-defined.
+    \item Due to the observational study design and MHT initiation not being randomized, we make no assumptions about the conditional distributions of $O$, so $\mathcal M$ is a nonparametric model.
+\end{itemize}
+    % We use a new-user design: we restrict to women who are free of hypertension and have never used MHT at baseline, so that follow-up begins at a well-defined time zero and prevalent-user bias is avoided. Because the data are observational, MHT initiation was not randomized and is plausibly driven by time-varying factors such as vasomotor symptoms and menopausal stage, which are themselves affected by prior MHT use. We make no assumptions about the form of the conditional distributions of $O$, so $\mathcal M$ is a nonparametric model. The nuisance parameters are the treatment mechanism $g_A$, the censoring mechanism $g_C$, and the sequence of conditional outcome expectations $\bar{Q}$, which we estimate with Super Learner. Estimation proceeds by the iterated conditional expectation (sequential regression) form of the longitudinal g-formula, with a targeting step at each visit.
+\end{frame}
+
+
+\begin{frame}{Roadmap Step 3: Target Estimand (Interventions)}
+We compare dynamic treatment rules for the \emph{initiation} of MHT. A rule $d$ assigns $A(t)$ at each visit as a function of the woman's observed history through visit $t$. We consider:
+\begin{itemize}
+    \item $d_0$ (never initiate): $A(t) = 0$ at every visit.
+    \item $d_{\text{vm}}$: initate MHT at the first visit at which a woman reports vasomotor symptoms, and continue use at all later visits
+    \item $d_{\text{early}}$: initiate MHT at the first visit at which the woman is in late perimenopause or early postmenopause, and continue use %TODO: confirm menopausal-stage variable and handling of HT-masked (``unknown'') status.
+    \item $d_{\text{late}}$: initiate $\delta$ visits after the $d_{\text{early}}$ trigger and continue use %TODO: choose $\delta$ based on observed treatment patterns.
+\end{itemize}
+\end{frame}
+% Women whose observed treatment deviates from a given rule are treated as artificially censored under that rule, so the estimates for each rule depend on the censoring model. We will assess how many women follow each rule at each visit, and allow a grace period of one visit around the trigger if adherence is too low %TODO.
+
+\begin{frame}{Roadmap Step 3: Target Estimand (Parameter)}
+Let $Y_{d,\bar{c}=0}(K)$ be the counterfactual indicator of hypertension by visit $K$ if a woman had followed rule $d$ and had not been lost to follow-up. Our target parameters are the cumulative incidences
+\[
+\Psi_d(P_0) = \mathbf{E}_0\left[Y_{d,\,\bar{c}=0}(K)\right] = P(T_d \le K) = 1 - S_d(K),
+\]
+and the primary contrasts are the risk differences
+\begin{align*}
+&\Psi_{d_{\text{vm}}}(P_0) - \Psi_{d_0}(P_0), \\ 
+&\Psi_{d_{\text{early}}}(P_0) - \Psi_{d_0}(P_0), \text{ and} \\
+&\Psi_{d_{\text{early}}}(P_0) - \Psi_{d_{\text{late}}}(P_0).
+\end{align*}
+\end{frame}
+
+% Explain all three!
+% The second contrast speaks directly to the timing hypothesis: does it matter, for incident hypertension, when MHT is started relative to the menopausal transition? 
+
+\begin{frame}{Roadmap Step 4: Identification}
+Under consistency, sequential randomization, and positivity for each rule, these parameters are identified by the longitudinal g-formula. 
+TODO
+\[
+\Psi_d(P_0).
+\]
+\end{frame}
+
+\begin{frame}
+\heading{Estimation}
+\end{frame}
+
+\begin{frame}{Super Learner}
+Discuss the super learner specification (learners, cross-validation structure, performance metric), and provide justification.
+\end{frame}
+
+\begin{frame}{Initial Estimate}
+Obtain initial estimate with super learner. Provide results and interpret correctly.
+\end{frame}
+
+\begin{frame}{TODO}
+Update initial fit using TMLE. 
+Provide inference. What method did you use to calculate the standard error for the estimator of the target parameter?
+Interpret results. What additional assumptions are needed to interpret the target parameter as a causal parameter? Are they reasonable?
+Discuss limitations and next steps. How do your results fit with the existing literature?
+How do the limitations affect the interpretation or quality of the data? What new directions are supported by your findings?
+State the overall conclusion and impact of your study. What are the main “take-home” messages?
+Make effective use of tables, figures, and use clear notation.
+Explain the analysis clearly, and justify your approach.
+\end{frame}
+\end{document}
+
+\begin{frame}{Super Learner}
+Discuss the super learner specification (learners, cross-validation structure, performance metric), and provide justification.
+\includegraphics[scale=0.27,page=4]{\pdf}%
+\end{frame}
+
+\begin{frame}{Initial Estimate}
+Obtain initial estimate with super learner. Provide results and interpret correctly.
+\begin{figure}
+\includegraphics[scale=0.27,page=4]{\pdf}%
+\caption{Period: January 2001--March 2022. Source: BLS data from the CPS and JOLTS.}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Collection of figures (one figure per click)}
+\includegraphics<1>[scale=0.27,page=1]{\pdf}%
+\includegraphics<2>[scale=0.27,page=2]{\pdf}%
+\includegraphics<3>[scale=0.27,page=3]{\pdf}%
+\includegraphics<4>[scale=0.27,page=5]{\pdf}%
+\end{frame}
+
+\begin{frame}
+\heading{Slide with table}
+\end{frame}
+
+\begin{frame}
+\frametitle{Basic table}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccc}
+\toprule
+ & Column 1 & Column 2 & Column 3 & Column 4\\
+\midrule
+Line 1 & A  & \al{B} & C  & C \\
+Line 2 & D & E & F & C \\ 
+Line 3 & G & H & I & C \\ 
+\midrule
+Line 4 & J & K & L & C \\ 
+Line 5 & M & N & O & C \\ 
+\midrule
+Line 6 & \al{B} & K & L & C \\ 
+Line 7 & M & N & -- & K \\ 
+\bottomrule
+\end{tabular*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Basic table with note}
+\begin{table}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccc}
+\toprule
+ & Column 1 & Column 2 & Column 3 & Column 4\\
+\midrule
+Line 1 & A & $\mathcal{B}$ & C  & C \\
+Line 2 & D & E & F & \alg[2]{$\Lambda$} \\ 
+Line 3 & \alr[1]{$\mathbb{G}$} & H & I & \alg[2]{$\mathcal{C}$} \\ 
+\midrule
+Line 4 & J & K & L & \alg[2]{$\mathcal{C}$} \\ 
+Line 5 & M & N & O & \alg[2]{$\mathcal{C}$} \\ 
+\midrule
+Line 6 & \alr[1]{B} & \alr[1]{$\mathcal{K}$} & L & C \\ 
+Line 7 & M & N & -- & \alr[1]{$\mathcal{K}$} \\ 
+\bottomrule
+\end{tabular*}
+\caption{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua---sunt in culpa qui officia deserunt mollit anim id.}
+\end{table}
+\end{frame}
+
+\begin{frame}
+\heading{Slides with theorems}
+\end{frame}
+
+\begin{frame}
+\frametitle{Slide with theorem}
+\begin{theorem}[First theorem]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit:
+\begin{equation*}
+\sum_k\mathcal{S}_{k_x}(z) \approx \frac{S(z)^x}{k / 23 -\zeta\gamma [45- S(z)] + \ln(y) - j^2+x(l)}
+\end{equation*}
+Ut enim ad minim veniam, sunt in culpa qui officia deserunt mollit anim id est laborum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{Slide with lemma}
+\begin{lemma}[Interesting lemma]
+ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat:
+\begin{equation}
+z^* = \int_{0}^{\infty} \alpha(i) \cdot \frac{1-\beta}{1-\alpha(i)\beta}\,di
+\end{equation}
+Sed vel sodales dui: 
+\begin{equation}
+S(z)^x > \frac{\zeta}{\gamma} \cdot \exp(45- S(z))
+\end{equation}
+\end{lemma}
+\end{frame}
+
+\begin{frame}
+\frametitle{Slide with proposition}
+\begin{itemize}
+\item Quia dolor sit amet consectetur adipiscing velit
+\item Sed quia non numquam eius modi tempora incidunt
+\item Ut labore et dolore magnam aliquam quaerat voluptatem
+\end{itemize}
+\begin{proposition}[Application to interesting topic]
+Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua $\mathcal{Z}(\alpha)$. 
+\begin{equation*}
+\frac{\sum_i z^i}{\prod_i q^i} \to \frac{\int_{0}^{\infty} \alpha(i) \cdot [1-\beta]\,di}{1-\exp(\alpha)\sin(\beta)}.
+\end{equation*}
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+\end{proposition}
+\end{frame}
+
+\begin{frame}
+\frametitle{Slide with corollary}
+\begin{corollary}[Implication in a simple yet common case]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua:
+\begin{equation*}
+\mathbb{E}(N(z^*)) \approx \frac{1-\mathbb{P}(\alpha\pi)}{1-\pi}- \frac{f(y)}{z(p)^*} + P(\Gamma).
+\end{equation*}
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+\end{corollary}
+\begin{itemize}
+\item Donec commodo justo a eros malesuada
+\item Eget vulputate tortor accumsan, 
+\item Vulputate metus eu, finibus nunc: $\ln(y) - \sum j^2 \to x(l)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Slide with pictograms}
+\begin{itemize}
+\item implication: this \so that
+\item sequential events: this \then that
+\item something is going up: \up
+\item something is going down: \down
+\item[\so] pictogram used as a list item
+\item[\then] another pictogram used as a list item
+\end{itemize}
+\end{frame}
+
+\lastslide
