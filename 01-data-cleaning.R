@@ -1,4 +1,5 @@
 # Data Cleaning
+
 library(here)
 library(dplyr)
 library(tidyverse)
@@ -291,12 +292,16 @@ for (i in 3:length(all_icpsr)) {
   }
 }
 
+# Filter out women with HTN0 == 1!
+clean_df_htnfree <- clean_df %>%
+  filter(HTN0 == 0)
+
 # Write to csv
-write.csv(clean_df, here("data", "mht_final.csv"), row.names=FALSE)
+write.csv(clean_df_htnfree, here("data", "mht_final.csv"), row.names=FALSE)
 
 # Consider if we need to shift everything back:
 # to ensure the time-ordering of the A's and L's is correct
-shift_clean_df <- copy(clean_df)
+shift_clean_df <- copy(clean_df_htnfree)
 shift_cols <- paste0(c("D_MHT", "MHT"), rep(c(0:9), each=2))
 for (col in shift_cols) {
   current_visit <- as.numeric(substr(col, nchar(col), nchar(col)))
