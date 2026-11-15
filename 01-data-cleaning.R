@@ -45,6 +45,7 @@ baseline_W0_inbaseline <- c("RACE",
                             "WEIGHT0", 
                             "STATUS0", 
                             "SMOKERE0",
+                            "HOTFLAS0",
                             "ALCHSRV0",
                             sapply(depress_prefix, function(x) paste0(x, 0)),
                             sapply(anxiety_prefix, function(x) paste0(x, 0)))
@@ -310,6 +311,6 @@ for (col in shift_cols) {
 }
 
 shift_clean_df <- shift_clean_df %>%
-  select(-c(D_MHT10, MHT10))
+  select(-c(D_MHT0, D_MHT10, MHT10))
 
 write.csv(shift_clean_df, here("data", "mht_final_shiftexp.csv"), row.names=FALSE)
