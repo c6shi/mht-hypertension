@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1 in]{geometry}
+\usepackage{amsmath, amsthm, amssymb, scrextend}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{bm}
+\usepackage{dsfont}
+
+\setlength{\parindent}{0pt}
+
+\newenvironment{soln}
+    {\begin{mdframed}}
+    {\end{mdframed}}
+
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\E}{\mathbf{E}}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\1}{\mathds{1}}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+\title{Concepts from PH 240B For This Project}
+\author{Candus Shi}
+\maketitle
+
+\section{Roadmap of Statistical Learning}
+Question of interest: Among midlife, menopausal hormone therapy (MHT)-naive women in SWAN who are free of hypertension at baseline, how does the cumulative incidence of hypertension by visit $K$ differ under rules for initiating MHT at different stages of the menopausal transition and response to vasomotor symptoms?
+
+\hfill
+
+Shorter version: How does the timing of menopausal hormone therapy (MHT) initiation affect the risk of hypertension over $K$ years of follow-up among midlife women in SWAN?
+\begin{enumerate}
+	\item Data: $n$ iid observations of random variable $O \sim P_0$, where 
+	\[
+	O = (W, L(1), A(1), C(1), Y(1), \dots, L(10), A(10), C(10), Y(10))
+	\]
+	where
+	\begin{itemize}
+		\item $W$ are baseline covariates: age, race/ethnicity, education, baseline blood pressure
+		\item $L(t)$ are time-varying covariates at visit $t$: menopausal status, vasomotor symptoms, height, weight, alcohol use, smoking, physical activity, diabetes status, depression, anxiety, missingness indicator of exposure and outcome 
+		\item $A(t)$ is exposure at visit $t$: use of MHT since the last visit (combination estrogen/progestin, estrogen pills, estrogen injection or patch, or progestin pills)
+		\item $C(t)$ is censoring at visit $t$: first instance of right-censoring in outcome 
+		\item $Y(t)$ is outcome at visit $t$: incident hypertension which is a) blood pressure $\ge$ 130/80 mmHg (\texttt{SYSBP1/DIABP1} and \texttt{SYSBP2/DIABP2}), or b) use of blood pressure/anti-hypertensive medication since visit $t$ (\texttt{BP1} and \texttt{BP2}), or c) indicator of being told by doctor of hypertension (\texttt{HIGHBP})
+	\end{itemize}
+	Note: the censoring variable must be created, and is only for true right-censoring, i.e. missingness in outcome until end of follow-up. 
+	
+	\item Statistical Model: $\mathcal M$ is nonparametric; no assumptions on the set of possible probability distributions of $O$.
+	\item Target Parameter: We are interested in comparing different dynamic treatment rules for initiation of MHT.
+	\begin{itemize}
+		\item $d_0$: $A(t) = 0$ at every visit.
+		\item $d_\text{vm}$: initiate MHT at first visit at which a woman reports vasomotor symptoms, and continue use.
+		\item $d_\text{early}$: initiate MHT at first visit at which a woman is in late perimenopause or early postmenopause, and continue use.
+		\item $d_\text{late}$: initiate MHT $\delta = \{1, 2, 3\}$ visits after the $d_\text{early}$ trigger, and continue use.
+	\end{itemize}
+	\item Identification and Estimation:
+	\item Inference: 
+\end{enumerate}
+
+\section{Censored data in survival analysis}
+We have interval censoring.
+
+\section{Product integral representation of Kaplan-Meier}
+
+
+\section{Kaplan-Meier as NPMLE}
+
+\section{Empirical probability measure and functional CLT}
+
+\section{Asymptotic linearity of an estimator and its influence curve}
+
+\end{document}
