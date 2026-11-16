@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.2)  14 NOV 2026 15:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.2)  16 NOV 2026 00:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -810,11 +810,18 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+Overfull \hbox (20.96242pt too wide) in paragraph at lines 48--49
+\OT1/cmr/m/n/12 130/80 mmHg (\OT1/cmtt/m/n/12 SYSBP1/DIABP1 \OT1/cmr/m/n/12 and
+ \OT1/cmtt/m/n/12 SYSBP2/DIABP2\OT1/cmr/m/n/12 ), or b) use of blood pressure/a
+nti-
+ []
+
+[1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2]
-(./240B-concepts.aux) ) 
+al/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+[2] (./240B-concepts.aux) ) 
 Here is how much of TeX's memory you used:
  18839 strings out of 476025
  367508 string characters out of 5790018
@@ -823,16 +830,16 @@ Here is how much of TeX's memory you used:
  526472 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,6n,106p,472b,329s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfr
-m1200.pfb>
-Output written on 240B-concepts.pdf (2 pages, 92687 bytes).
+</usr/local/texlive/2023/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super
+/sfrm1200.pfb>
+Output written on 240B-concepts.pdf (2 pages, 92679 bytes).
 PDF statistics:
  55 PDF objects out of 1000 (max. 8388607)
  34 compressed objects within 1 object stream

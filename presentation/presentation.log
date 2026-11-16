@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.2)  14 NOV 2026 15:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.2)  16 NOV 2026 00:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1330,24 +1330,106 @@ LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/it' will be
 
 ] [8
 
-{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolC.enc}] [9
+{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolC.enc}]
+Package microtype Info: Fixing zero \fontdimen 6 for font `OMX/MnSymbolE/m/n/14
+.4'
+(microtype)             (new value: 14.4pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `OMX/MnSymbolE/m/n/10
+'
+(microtype)             (new value: 10.0pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `OMX/MnSymbolE/m/n/7'
+
+(microtype)             (new value: 7.0pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolA/m/n/14.4
+'
+(microtype)             (new value: 14.4pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolA/m/n/10'
+(microtype)             (new value: 10.0pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolA/m/n/7'
+(microtype)             (new value: 7.0pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolB/m/n/14.4
+'
+(microtype)             (new value: 14.4pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolB/m/n/10'
+(microtype)             (new value: 10.0pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolB/m/n/7'
+(microtype)             (new value: 7.0pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolC/m/n/14.4
+'
+(microtype)             (new value: 14.4pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolC/m/n/10'
+(microtype)             (new value: 10.0pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolC/m/n/7'
+(microtype)             (new value: 7.0pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolD/m/n/14.4
+'
+(microtype)             (new value: 14.4pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolD/m/n/10'
+(microtype)             (new value: 10.0pt) on input line 119.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/MnSymbolD/m/n/7'
+(microtype)             (new value: 7.0pt) on input line 119.
+ [9
 
 ]
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
-(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 114.
+(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 145.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
-(Font)              scaled to size 17.28pt on input line 114.
-LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/sc' aliased to
-(Font)              `T1/SourceSansPro-TLF/regular/sc' on input line 114.
-LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/sc' will be
-(Font)              scaled to size 17.28pt on input line 114.
+(Font)              scaled to size 10.0pt on input line 145.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/b/n' aliased to
+(Font)              `T1/SourceSansPro-TLF/bold/n' on input line 145.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/bold/n' will be
+(Font)              scaled to size 10.0pt on input line 145.
  [10
 
-] [11
+]
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/sc' aliased to
+(Font)              `T1/SourceSansPro-TLF/regular/sc' on input line 171.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/sc' will be
+(Font)              scaled to size 10.0pt on input line 171.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/sc' aliased to
+(Font)              `T1/SourceSansPro-TLF/regular/sc' on input line 171.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/sc' will be
+(Font)              scaled to size 7.0pt on input line 171.
+ [11
 
-] [12
+]
+Overfull \vbox (1.11868pt too high) detected at line 198
+ []
 
-] [13
+[12
+
+]
+Overfull \vbox (1.75255pt too high) detected at line 224
+ []
+
+[13
+
+]
+Overfull \vbox (1.75255pt too high) detected at line 250
+ []
+
+[14
+
+] [15
+
+] [16
+
+]
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/n' aliased to
+(Font)              `T1/SourceSansPro-TLF/regular/n' on input line 266.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/n' will be
+(Font)              scaled to size 17.28pt on input line 266.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/m/sc' aliased to
+(Font)              `T1/SourceSansPro-TLF/regular/sc' on input line 266.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-TLF/regular/sc' will be
+(Font)              scaled to size 17.28pt on input line 266.
+ [17
+
+] [18
+
+] [19
+
+] [20
 
 ]
 \tf@nav=\write6
@@ -1364,28 +1446,31 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27595 strings out of 476025
- 527952 string characters out of 5790018
- 1858388 words of memory out of 5000000
- 47282 multiletter control sequences out of 15000+600000
- 651530 words of font info for 173 fonts, out of 8000000 for 9000
+ 27788 strings out of 476025
+ 531719 string characters out of 5790018
+ 1867388 words of memory out of 5000000
+ 47378 multiletter control sequences out of 15000+600000
+ 703376 words of font info for 244 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,122p,1009b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol10.pf
 b></usr/local/texlive/2023/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol8.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSans
-Pro-It.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/adobe/sourcesanspro/
-SourceSansPro-Regular.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr8.pfb>
-Output written on presentation.pdf (13 pages, 211272 bytes).
+Pro-Bold.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/adobe/sourcesanspr
+o/SourceSansPro-It.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/adobe/so
+urcesanspro/SourceSansPro-Regular.pfb></usr/local/texlive/2023/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb>
+Output written on presentation.pdf (20 pages, 297183 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 118 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 59435 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 222 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 88107 words of extra memory for PDF output out of 89155 (max. 10000000)
 
