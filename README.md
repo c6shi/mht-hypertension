@@ -1,8 +1,3 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
 # Finding the Effect of MHT Initiation on Hypertension Incidence in Menopausal Women Using L-TMLE
 PBHLTH 240B Fall 2026 Research Project
 
